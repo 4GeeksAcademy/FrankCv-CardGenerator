@@ -2,10 +2,88 @@
 import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+let cardNumber = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+let symbolSuit = ["♦", "♥", "♠", "♣"];
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
+let generateSuitNumber = function(array) {
+  let randomNumber = Math.floor(Math.random() * array.length);
+  let found = array[randomNumber];
+  return found;
 };
+let time = null;
+window.onload = function() {
+  //gets a random value of suit and Card's Number
+  let randomSuit = generateSuitNumber(symbolSuit);
+  let randomCardNumber = generateSuitNumber(cardNumber);
+  //find element in html
+  let suitTop = document.getElementById(`suitTop`);
+  let number = document.getElementById(`number`);
+  let suitBot = document.getElementById(`suitBot`);
+  //setting text in html founded
+  suitTop.innerText = `${randomSuit}`;
+  suitBot.innerText = `${randomSuit}`;
+  number.innerText = `${randomCardNumber}`;
+  //Modifying styles by DOM
+  let allSymbols = document.querySelectorAll(`.symbol`);
+  for (let i = 0; i < allSymbols.length; i++) {
+    allSymbols[i].textContent === "♦" || allSymbols[i].textContent === "♥"
+      ? (allSymbols[i].style.color = `red`)
+      : (allSymbols[i].style.color = `black`);
+  }
+};
+
+const newCardButton = document.getElementById(`addNewCard`);
+const dimention = document.getElementById(`dimention`);
+const input = document.getElementById(`floatingInput`);
+const widthCard = document.getElementById(`floatingInputWidth`);
+const heightCard = document.getElementById(`floatingInputHeight`);
+const card = document.getElementById(`card`);
+const sizeButton = document.getElementById(`reSize`);
+console.log(newCardButton);
+
+newCardButton.addEventListener("click", () => {
+  createNewCard();
+});
+//Event to get input Time
+
+dimention.addEventListener("click", () => {
+  console.log(time);
+  time === null
+    ? (time = setInterval(createNewCard, input.value * 1000))
+    : clearInterval(time);
+  console.log(time);
+
+  console.log(1000 * input.value);
+});
+
+sizeButton.addEventListener("click", () => {
+  //When click on button then get inputs value, but this should be different from zero
+  card.style.width = `${widthCard.value}px`;
+  card.style.height = `${heightCard.value}px`;
+  console.log(
+    `its width is: ${toString(widthCard.value)} its height is : ${toString(
+      heightCard.value
+    )}`
+  );
+});
+
+function createNewCard() {
+  //gets a random value of suit and Card's Number
+  let randomSuit = generateSuitNumber(symbolSuit);
+  let randomCardNumber = generateSuitNumber(cardNumber);
+  //find element in html
+  let suitTop = document.getElementById(`suitTop`);
+  let number = document.getElementById(`number`);
+  let suitBot = document.getElementById(`suitBot`);
+  //setting text in html founded
+  suitTop.innerText = `${randomSuit}`;
+  suitBot.innerText = `${randomSuit}`;
+  number.innerText = `${randomCardNumber}`;
+  //Modifying styles by DOM
+  let allSymbols = document.querySelectorAll(`.symbol`);
+  for (let i = 0; i < allSymbols.length; i++) {
+    allSymbols[i].textContent === "♦" || allSymbols[i].textContent === "♥"
+      ? (allSymbols[i].style.color = `red`)
+      : (allSymbols[i].style.color = `black`);
+  }
+}
