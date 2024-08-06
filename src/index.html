@@ -5,33 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Random Card Generator</title>
   </head>
-  <body class="bg-success">
+  <body class="bg-success fs-2">
     <div class="d-flex m-auto" id="general-div">
       <div
         class="card fw-bold m-auto rounded-5 w-75 mb-2 mt-2 me-0"
         id="card"
         style="max-width: 300px;height: 500px;"
       >
-        <div
-          class="header ps-2 pt-1 symbol"
-          style="font-size: 100px"
-          id="suitTop"
-        >
-          <p class="card-text"></p>
+        <div class="header ps-2 pt-1 " style="font-size: 2.5em" id="suitTop">
+          <p class="symbol card-text"></p>
         </div>
         <div
           class="d-flex m-auto align-items-center h-100"
-          style="font-size: 100px;"
+          style="font-size: 2.5em;"
           id="number"
         >
           <p class="card-text"></p>
         </div>
         <div
-          class="footer pe-2 pb-1 d-flex justify-content-start symbol"
-          style="font-size: 100px;transform:rotate(180deg)"
+          class="footer pe-2 pb-1 d-flex justify-content-start ps-2"
+          style="font-size: 2.5em;transform:rotate(180deg)"
           id="suitBot"
         >
-          <p class="card-text"></p>
+          <p class="symbol card-text "></p>
         </div>
       </div>
       <div class="container mt-2 ms-0 w-50 me-0">
@@ -51,7 +47,7 @@
             type="number"
             style="width: 150px"
           />
-          <label for="floatingInput">Set Time</label>
+          <label for="floatingInput" class="fs-5">Set Time</label>
         </div>
         <button
           type="button"
@@ -69,7 +65,7 @@
               type="number"
               style="width: 150px"
             />
-            <label for="floatingInputWidth">Set Width</label>
+            <label for="floatingInputWidth" class="fs-5">Set Width</label>
           </div>
           <div class="form-floating w-25">
             <input
@@ -78,7 +74,7 @@
               type="number"
               style="width: 150px"
             />
-            <label for="floatingInputHeight">Set Height</label>
+            <label for="floatingInputHeight" class="fs-5">Set Height</label>
           </div>
         </div>
         <button

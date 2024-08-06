@@ -10,48 +10,30 @@ let generateSuitNumber = function(array) {
   let found = array[randomNumber];
   return found;
 };
-let time = null;
+
 window.onload = function() {
-  //gets a random value of suit and Card's Number
-  let randomSuit = generateSuitNumber(symbolSuit);
-  let randomCardNumber = generateSuitNumber(cardNumber);
-  //find element in html
-  let suitTop = document.getElementById(`suitTop`);
-  let number = document.getElementById(`number`);
-  let suitBot = document.getElementById(`suitBot`);
-  //setting text in html founded
-  suitTop.innerText = `${randomSuit}`;
-  suitBot.innerText = `${randomSuit}`;
-  number.innerText = `${randomCardNumber}`;
-  //Modifying styles by DOM
-  let allSymbols = document.querySelectorAll(`.symbol`);
-  for (let i = 0; i < allSymbols.length; i++) {
-    allSymbols[i].textContent === "♦" || allSymbols[i].textContent === "♥"
-      ? (allSymbols[i].style.color = `red`)
-      : (allSymbols[i].style.color = `black`);
-  }
+  createNewCard();
 };
 
 const newCardButton = document.getElementById(`addNewCard`);
 const dimention = document.getElementById(`dimention`);
-const input = document.getElementById(`floatingInput`);
+//const input = document.getElementById(`floatingInput`);
 const widthCard = document.getElementById(`floatingInputWidth`);
 const heightCard = document.getElementById(`floatingInputHeight`);
 const card = document.getElementById(`card`);
 const sizeButton = document.getElementById(`reSize`);
-console.log(newCardButton);
 
 newCardButton.addEventListener("click", () => {
   createNewCard();
 });
 //Event to get input Time
-
+const input = document.getElementById(`floatingInput`);
+let time = null;
 dimention.addEventListener("click", () => {
   console.log(time);
   time === null
     ? (time = setInterval(createNewCard, input.value * 1000))
     : clearInterval(time);
-  console.log(time);
 
   console.log(1000 * input.value);
 });
@@ -77,13 +59,16 @@ function createNewCard() {
   let suitBot = document.getElementById(`suitBot`);
   //setting text in html founded
   suitTop.innerText = `${randomSuit}`;
-  suitBot.innerText = `${randomSuit}`;
   number.innerText = `${randomCardNumber}`;
+  suitBot.innerText = `${randomSuit}`;
   //Modifying styles by DOM
-  let allSymbols = document.querySelectorAll(`.symbol`);
+  let allSymbols = document.querySelectorAll(`div`);
+
   for (let i = 0; i < allSymbols.length; i++) {
-    allSymbols[i].textContent === "♦" || allSymbols[i].textContent === "♥"
-      ? (allSymbols[i].style.color = `red`)
-      : (allSymbols[i].style.color = `black`);
+    if (allSymbols[i].innerText === `♦` || allSymbols[i].innerText === `♥`) {
+      allSymbols[i].style.color = `red`;
+    } else {
+      allSymbols[i].style.color = `black`;
+    }
   }
 }
