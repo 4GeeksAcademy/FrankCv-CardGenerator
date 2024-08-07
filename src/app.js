@@ -13,29 +13,34 @@ let generateSuitNumber = function(array) {
 
 window.onload = function() {
   createNewCard();
+  //Event to get input Time
 };
 
 const newCardButton = document.getElementById(`addNewCard`);
-const dimention = document.getElementById(`dimention`);
+const setTimeButton = document.getElementById(`setTimeButton`);
 //const input = document.getElementById(`floatingInput`);
 const widthCard = document.getElementById(`floatingInputWidth`);
 const heightCard = document.getElementById(`floatingInputHeight`);
 const card = document.getElementById(`card`);
 const sizeButton = document.getElementById(`reSize`);
 
+// let input = document.getElementById(`floatingInput`).value;
+let intervalo = null;
+// input = parseInt(input) * 1000;
+setTimeButton.addEventListener("click", () => {
+  // console.log(input);
+  // setInterval(createNewCard, input);
+  // console.log(input.value);
+  clearInterval(intervalo);
+  let tiempo = document.getElementById("floatingInput").value;
+  tiempo = parseInt(tiempo) * 1000;
+  //createNewCard();
+  intervalo = setInterval(createNewCard, tiempo);
+  document.getElementById("floatingInput").value = "";
+});
+
 newCardButton.addEventListener("click", () => {
   createNewCard();
-});
-//Event to get input Time
-const input = document.getElementById(`floatingInput`);
-let time = null;
-dimention.addEventListener("click", () => {
-  console.log(time);
-  time === null
-    ? (time = setInterval(createNewCard, input.value * 1000))
-    : clearInterval(time);
-
-  console.log(1000 * input.value);
 });
 
 sizeButton.addEventListener("click", () => {
